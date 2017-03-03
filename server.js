@@ -1,7 +1,7 @@
 //require out packages
 
 const express = require('express');
-const expressLayouts = require('express-ejs-Layouts');
+const expressLayouts = require('express-ejs-layouts');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
