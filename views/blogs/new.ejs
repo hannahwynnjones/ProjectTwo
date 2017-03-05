@@ -1,0 +1,38 @@
+<h1>Add a blog to you account</h1>
+
+<form method="POST" action="/blogs" enctype="multipart/form-data">
+
+<%# added username to link to edit/delete buttons, if it works without, i'll remove this%>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+  </div>
+
+  <div class="form-group">
+    <label for="dish">Dish</label>
+    <textarea name="dish"><%= blog.dish %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="image">Pictures</label>
+    <input type="file" name="image" id="image">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description"><%= blog.description %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="recipie">Recipie</label>
+    <textarea name="recipie"><%= blog.recipie %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="tag">Tag</label>
+    <textarea name="tag"><%= blog.tag %></textarea>
+  </div>
+
+  <button class="addBlog">Add Blog</button>
+</form>

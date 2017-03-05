@@ -2,19 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>project-2</title>
-<link rel="stylesheet" href="/css/style.css">
-<script src="/js/app.js" charset="utf-8"></script>
-    </script>
+    <title>Rate my bake</title>
+    <% include ./partials/stylesheets %>
   </head>
   <body>
+    <% include ./partials/navbar %>
     <% for(const type in messages) { %>
-      <div class="<%= type %>">
-        <h5><%= messages[type] %></h5>
+      <div class="alert alert-<%= type %>">
+        <div class="container">
+          <%= messages[type] %>
+        </div>
       </div>
     <% } %>
-    <main>
+    <main class="container">
       <%- body %>
     </main>
+    <% include ./partials/scripts %>
   </body>
 </html>

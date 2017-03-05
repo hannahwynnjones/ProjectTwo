@@ -1,0 +1,10 @@
+<h2>Edit your comment</h2>
+
+  <section>
+    <h4>Edit comment</h4>
+    <form method="POST" action="/blogs/<%= blog.id %>/comments">
+
+      <textarea name="content" id="content" placeholder="Comment"><"<%= blog.id %>/comments"></textarea>
+      <button class="button">Leave a comment</button>
+    </form>
+  </section>

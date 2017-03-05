@@ -1,40 +1,91 @@
 const router = require('express').Router();
 const registrations = require('../controllers/registrations');
 const sessions = require('../controllers/sessions');
+const oauth = require('../controllers/oauth');
+const blogsController = require('../controllers/blogs');
 const secureRoute = require('../lib/secureRoute');
-//secure route is not used yet, but can be added to functions so that it is checking whether the user is logged in or not eg editing or deleting files
-router.get('/', (req, res) => res.render('statics/index'));
+// const upload = require('../lib/upload');
+const statics = require('../controllers/statics');
+
+//-------------------HOME--------------------
+
+router.route('/')
+  .get(statics.index);
+
+  //--------Once registered, shows user's profile to them----
+
+router.route('/user')
+  .get(secureRoute, registrations.show);
+
+//----------see allblogs????---------------
+
+router.route('/blogs')
+  .get(blogsController.index)
+  .post(secureRoute, blogsController.create);
+
+//-------------create new blog----------
+
+router.route('/blogs/new')
+  .get(secureRoute, blogsController.new);
+
+//--------edit or update a blog---------------
+
+router.route('/blogs/:id')
+  .get(blogsController.show)
+  .put(secureRoute, blogsController.update)
+  .delete(secureRoute, blogsController.delete);
+
+router.route('/blogs/:id/edit')
+  .get(secureRoute, blogsController.edit);
+
+//--See all avaliable profiles who have registered with the site---
+
+//add comments
+
+router.route('/blogs/:id/comments')
+  .post(secureRoute, blogsController.createComment);
+
+router.route('/blogs/:id/comments/:commentId')
+  .delete(secureRoute, blogsController.deleteComment);
+
+//-------------------------------------------
+//EDIT COMMENTS
+
+router.route('/blogs/:id/editComments')
+  .post(secureRoute, blogsController.editComment);
+
+//-------------------------------------------
+
+router.route('/users');
+
+//----------------register---------------------
 
 router.route('/register')
   .get(registrations.new)
   .post(registrations.create);
 
+//-----------login-------------------
+
 router.route('/login')
   .get(sessions.new)
   .post(sessions.create);
 
-// router.route('/logout')
-//   .get(sessions.delete);
+  //------login with github------------
 
-//NOT NECCESSARILY HAVE TO ADD THE FOLLOWING:
+router.route('/oauth/github')
+  .get(oauth.github);
 
-// router.route('/shoes')
-//   .get(shoesController.index)
-//   .post(secureRoute, shoesController.create);
-//
-// router.route('/shoes/new')
-//   .get(secureRoute, shoesController.new);
-//
-// router.route('/shoes/:id')
-//   .get(shoesController.show)
-//   .put(secureRoute, shoesController.update)
-//   .delete(secureRoute, shoesController.delete);
-//
-// router.route('/shoes/:id/edit')
-//   .get(secureRoute, shoesController.edit);
+//------------------logout-----------------
 
-router.all('*'), (req, res) => res.notFound();
+router.route('/logout')
+  .get(sessions.delete);
+
+  //------Delete account button -------------
+
+router.route('/profile')
+  .delete(secureRoute, registrations.delete);
+
+// catch all 404 error page
+router.all('*', (req, res) => res.notFound());
 
 module.exports = router;
-
-//capital letters are classes (but in the case its a function)
