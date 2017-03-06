@@ -4,29 +4,29 @@ const User = require('../models/user');
 
 
 function facebook(req, res, next) {
-  return rp({
-    method: 'POST',
-    url: oauth.github.accessTokenURL,
-    qs: {
-      client_id: oauth.github.clientId,
-      client_secret: oauth.github.clientSecret,
-      code: req.query.code
-    },
-    json: true
-  })
-  .then((token) => {
-    return rp({
-      method: 'GET',
-      url: oauth.github.profileURL,
-      qs: token,
-      json: true,
-      headers: {
-        'User-Agent': 'Request-Promise'
-      }
-    });
-  })
+  // return rp({
+  //   method: 'POST',
+  //   url: oauth.facebook.accessTokenURL,
+  //   qs: {
+  //     client_id: oauth.facebook.clientId,
+  //     client_secret: oauth.facebook.clientSecret,
+  //     code: req.query.code
+  //   },
+  //   json: true
+  // })
+  // .then((token) => {
+  //   return rp({
+  //     method: 'GET',
+  //     url: oauth.facebook.profileURL,
+  //     qs: token,
+  //     json: true,
+  //     headers: {
+  //       'User-Agent': 'Request-Promise'
+  //     }
+  //   });
+  // })
   .then((profile) => {
-    return User.findOne({$or: [{email: profile.email }, { githubId: profile.id}] })//first check their emails in case they already exist on our systm
+    return User.findOne({$or: [{email: profile.email }, { facebookId: profile.id}] })//first check their emails in case they already exist on our systm
       .then((user) => {
         if(!user) { ///if no user
           user = new User({
@@ -35,7 +35,7 @@ function facebook(req, res, next) {
           });
         }
 
-        user.githubId = profile.id;
+        user.facebookId = profile.id;
         user.image = profile.avatar_url;
         return user.save();
       });
@@ -51,7 +51,7 @@ function facebook(req, res, next) {
 }
 
 module.exports = {
-  github
+  facebook
 };
 
-//post request to github, with url , then send a query string which contains the client id, secret and the code qhich we get from req.query.code, which will then mean that github will send us an access token.
+//post request to facebook, with url , then send a query string which contains the client id, secret and the code qhich we get from req.query.code, which will then mean that facebook will send us an access token.
