@@ -31,6 +31,7 @@ function blogsShow(req, res, next) {
   Blog
     .findById(req.params.id)
     .populate('createdBy')
+    .populate('comments.createdBy')
     .exec()
     .then((blog) => {
       if(!blog) return res.notFound();

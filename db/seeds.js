@@ -31,6 +31,7 @@ User
         image: '../public/css/images/japan.jpg',
         description: 'homemade apple very tasty',
         tag: 'apple',
+
         createdBy: users[1]
       },{
 

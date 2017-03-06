@@ -7,6 +7,7 @@ const secureRoute = require('../lib/secureRoute');
 // const upload = require('../lib/upload');
 const statics = require('../controllers/statics');
 const usersController = require('../controllers/users');
+const recipies = require('../controllers/recipies');
 
 //-------------------STATICS: HOME, CONTACT, ABOUT--------------
 
@@ -34,6 +35,7 @@ router.route('/blogs/new')
 
 router.route('/blogs/:id')
   .get(blogsController.show)
+  .get(recipies.getRecipies)
   .put(secureRoute, blogsController.update)
   .delete(secureRoute, blogsController.delete);
 

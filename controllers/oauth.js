@@ -64,7 +64,6 @@ function facebook(req, res, next) {
     json: true
   })
 
-
   .then((token) => {
 
     return rp.get({
@@ -77,7 +76,7 @@ function facebook(req, res, next) {
     console.log(profile);
     return User.findOne({email: profile.email })//first check their emails in case they already exist on our systm
       .then((user) => {
-        if(!user) { ///if no user
+        if(!user) { 
           user = new User({
             username: profile.name,
             email: profile.email
@@ -103,5 +102,3 @@ module.exports = {
   facebook,
   github
 };
-
-//post request to github, with url , then send a query string which contains the client id, secret and the code qhich we get from req.query.code, which will then mean that github will send us an access token.

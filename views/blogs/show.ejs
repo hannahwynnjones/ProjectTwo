@@ -5,40 +5,9 @@
     <p><%= blog.createdBy.username %> <p>
     <p><%= blog.description %></p>
     <p><%= blog.recipie %></p>
+<div class="recipieDiv"></div>
   </p>
 
   <p class="show">
     <% while(blog.stars--) { %> &star; <% } %>
   </p>
-
-<% console.log(blog.createdBy.username) %>
-<% console.log(user.username) %>
-
-<%# //-------------------comments------------------------%>
-  <% if(locals.isLoggedIn) { %>
-    <section>
-      <h4>Leave a comment</h4>
-
-      <form method="POST" action="/blogs/<%= blog.id %>/comments">
-        <textarea name="content" id="content" placeholder="Comment"></textarea>
-        <button class="button">Leave a comment</button>
-      </form>
-    </section>
-  <% } %>
-
-<%# -----------------editing blog---------------------------%>
-
-  <% if(blog.createdBy.username === user.username) { %>
-  <section>
-    <a href="/blogs/<%= blog.id %>/edit">Edit <%= blog.dish %> Blog</a>
-  </section>
-  <% } %>
-</div>
-
-<%# ---------------------deleting blog----------------%>
-<% if(blog.createdBy.username === user.username) { %>
-  <form method="POST" action="/blogs/<%= blog.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button class="btn btn-danger">Delete <%= blog.dish %> Blog</button>
-  </form>
-<% } %>

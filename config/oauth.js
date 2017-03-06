@@ -11,7 +11,7 @@ module.exports = {
     }
 
   },
-  facebook:{
+  facebook: {
     loginURL: 'https://www.facebook.com/v2.8/dialog/oauth',
     accessTokenURL: 'https://graph.facebook.com/v2.8/oauth/access_token',
     profileURL: '#',
@@ -19,14 +19,8 @@ module.exports = {
     clientSecret: process.env.FB_BAKE_CLIENT_SECRET,
     scope: 'user:email',
     getLoginURL() {
-      return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=http://localhost:3000/oauth/facebook`
+      return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=http://localhost:3000/oauth/facebook`;
+    }
+
   }
-
-}
-}
-
-
-
-// https://www.facebook.com/v2.8/dialog/oauth?
-//   client_id={app-id}
-//   &redirect_uri={redirect-uri}
+};

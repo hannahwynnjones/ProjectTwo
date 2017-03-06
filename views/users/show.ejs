@@ -8,13 +8,11 @@
     <a href="/users/<%= user.id %>">
       <img src="<%= user.profilePic %>" alt="<%= user.username %>">
     </a>
-    <h2 class="index"><%= user.username %></h2>
+    <%=blog.createdBy.username%>
   </div>
-
   <div class="dishDiv">
     <h2>Your Dishs</h2>
-          <p>You have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
-
+          <p>if you have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
       <% blogs.forEach((blog) => { %>
         <% if (blog.createdBy.username === user.username) { %>
           <a href="/blogs/<%= blog.id %>">

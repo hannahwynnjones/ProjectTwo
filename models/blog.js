@@ -19,8 +19,8 @@ const blogSchema = new mongoose.Schema({
   tag: {type: String, required: true},
   stars: { type: Number },
 //i expect what we store here is an object id and also in the user collection already (so a user model as well)
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-  // comments: [ commentSchema ]
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  comments: [ commentSchema ]
 }, {
   timestamps: true
 });
