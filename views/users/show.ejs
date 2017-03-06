@@ -1,6 +1,7 @@
 <h1>show</h1>
-<% console.log(blog.createdBy.username) %>
-<% console.log(user.username) %>
+
+<%= user.username %>
+
 <% if(locals.isAuthenticated) { %>
 
   <div class="index">
@@ -14,16 +15,16 @@
     <h2>Your Dishs</h2>
           <p>You have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
 
-      // <% blogs.forEach((blog) => { %>
-      //   <% if (blog.createdBy.username === user.username) { %>
-      //     <a href="/blogs/<%= blog.id %>">
-      //     <img src="<%= blog.image %>" alt="<%= blog.dish %>">
-      //     <h2><%= blog.dish %></h2>
-      //     </a>
-      //
-      //   <% } %>
-      //
-      // <% }) %>
+      <% blogs.forEach((blog) => { %>
+        <% if (blog.createdBy.username === user.username) { %>
+          <a href="/blogs/<%= blog.id %>">
+          <img src="<%= blog.image %>" alt="<%= blog.dish %>">
+          <h2><%= blog.dish %></h2>
+          </a>
+
+        <% } %>
+
+      <% }) %>
   </div>
 
 <% } %>

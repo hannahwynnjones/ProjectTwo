@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Blog = require('../models/blog');
 
 //-------index shows every user --
 
@@ -17,7 +18,13 @@ function usersShow(req, res, next) {
     .findById(req.params.id)
     .then((user) => {
       if(!user) return res.notFound();
-      res.render('users/show', { user });
+
+      Blog
+        .find({createdBy: user.id})
+        .exec()
+        .then((blogs) => {
+          res.render('users/show', { user, blogs });
+        });
     })
     .catch(next);
 }

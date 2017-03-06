@@ -9,18 +9,23 @@ module.exports = {
     getLoginURL() {
       return `${this.loginURL}?client_id=${this.clientId}&scope=${this.scope}`;
     }
-    // faceook:{
-    //   loginURL: 'https://www.facebook.com/v2.8/dialog/oauth',
-    //   accessTokenURL: '#',
-    //   profileURL: '#',
-    //   clientId: process.env.GITHUB_CLIENT_ID,
-    //   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    //   scope: 'user:email',
-    //   getLoginURL() {
-    //     return `${this.loginURL}?client_id=${this.clientId}&redirect_uri={https://www.facebook.com/connect/login_success.html.}`
-    // }
+
+  },
+  facebook:{
+    loginURL: 'https://www.facebook.com/v2.8/dialog/oauth',
+    accessTokenURL: 'https://graph.facebook.com/v2.8/oauth/access_token',
+    profileURL: '#',
+    clientId: process.env.FB_BAKE_CLIENT_ID,
+    clientSecret: process.env.FB_BAKE_CLIENT_SECRET,
+    scope: 'user:email',
+    getLoginURL() {
+      return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=http://localhost:3000/oauth/facebook`
   }
-};
+
+}
+}
+
+
 
 // https://www.facebook.com/v2.8/dialog/oauth?
 //   client_id={app-id}

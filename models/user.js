@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   githubId: { type: Number },
   profilePic: { type: String },
-  images: [{ type: String }]
+  images: [{ type: String }],
+  facebookId: { type: String }
 });
 
 userSchema
@@ -19,7 +20,7 @@ userSchema
 
 //lifecycle hook - mongoose middleware.  this checkpassword function will be run before mongoose tries to validate.  pre - means you want to start this before the specified function.
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this.password && !this.githubId) {
+  if(!this.password && !this.githubId && !this.facebookId) {
     this.invalidate('password', 'required');
   }
   if(this.isModified('password') && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');

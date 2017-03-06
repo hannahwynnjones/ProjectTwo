@@ -81,8 +81,8 @@ router.route('/oauth/github')
 
   //------login with facebook------------
 
-// router.route('/oauth/facebook')
-//   .get(oauth.facebook);
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
 
 //------------------LOGOUT-----------------
 
