@@ -5,7 +5,6 @@
     <p><%= blog.createdBy.username %> <p>
     <p><%= blog.description %></p>
     <p><%= blog.recipie %></p>
-
   </p>
 
   <p class="show">
@@ -28,8 +27,6 @@
   <% } %>
 
 <%# -----------------editing blog---------------------------%>
-
-
 
   <% if(blog.createdBy.username === user.username) { %>
   <section>
