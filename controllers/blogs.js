@@ -85,8 +85,6 @@ function blogsDelete(req, res, next) {
 
 function createCommentRoute(req, res, next) {
 
-//forced the user onto the body, and can now use req.user whenever we like - this is hwo the comment has been added!
-
   req.body.createdBy = req.user;
 
   Blog

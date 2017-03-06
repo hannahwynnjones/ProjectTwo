@@ -1,1 +1,32 @@
 <h1>show</h1>
+
+<% if(locals.isAuthenticated) { %>
+
+  <div class="index">
+    <a href="/users/<%= user.id %>">
+      <img src="<%= user.profilePic %>" alt="<%= user.username %>">
+    </a>
+    <h2 class="index"><%= user.username %></h2>
+  </div>
+
+  <div class="dishDiv">
+    <h2>Your Dishs</h2>
+
+      <% blogs.forEach((blog) => { %>
+        <% if (blog.createdBy.id != user.id) { %>
+
+          <p>You have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
+
+        <% } else { %>
+
+          <a href="/blogs/<%= blog.id %>">
+          <img src="<%= blog.image %>" alt="<%= blog.dish %>">
+          <h2 class="index"><%= blog.dish %></h2>
+          </a>
+
+        <% } %>
+
+      <% }) %>
+  </div>
+
+<% } %>

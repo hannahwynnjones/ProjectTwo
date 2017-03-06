@@ -1,9 +1,8 @@
-
 <div>
   <img src="<%= blog.image %>" alt="<%= blog.dish %>">
   <h2 class="show"><%= blog.dish %></h2>
   <p class="show">
-    <p><%= blog.createdBy.email %> <p>
+    <p><%= blog.createdBy.username %> <p>
     <p><%= blog.description %></p>
     <p><%= blog.recipie %></p>
 
@@ -13,9 +12,11 @@
     <% while(blog.stars--) { %> &star; <% } %>
   </p>
 
+<% console.log(blog.createdBy.username) %>
+<% console.log(user.username) %>
 
 <%# //-------------------comments------------------------%>
-  <% if(locals.isAuthenticated) { %>
+  <% if(locals.isLoggedIn) { %>
     <section>
       <h4>Leave a comment</h4>
 
@@ -28,16 +29,17 @@
 
 <%# -----------------editing blog---------------------------%>
 
-  <% if(locals.isAuthenticated) { %>
+
+
+  <% if(blog.createdBy.username === user.username) { %>
   <section>
     <a href="/blogs/<%= blog.id %>/edit">Edit <%= blog.dish %> Blog</a>
   </section>
   <% } %>
 </div>
 
-
 <%# ---------------------deleting blog----------------%>
-<% if(locals.isAuthenticated) { %>
+<% if(blog.createdBy.username === user.username) { %>
   <form method="POST" action="/blogs/<%= blog.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <button class="btn btn-danger">Delete <%= blog.dish %> Blog</button>
