@@ -3,7 +3,7 @@
   <img src="<%= blog.image %>" alt="<%= blog.dish %>">
   <h2 class="show"><%= blog.dish %></h2>
   <p class="show">
-    <p><%= blog.username %> <p>
+    <p><%= blog.createdBy.email %> <p>
     <p><%= blog.description %></p>
     <p><%= blog.recipie %></p>
 
@@ -13,25 +13,7 @@
     <% while(blog.stars--) { %> &star; <% } %>
   </p>
 
-<%# -----------------see comment---------------%>
 
-  <section>
-    <h4>Comments</h4>
-    <% blog.comments.forEach((comment) => { %>
-      <p><%= comment.content %></p>
-      <small>Comments from : <%= comment.createdBy.username %></small>
-
-
-    <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
-      <form method="POST" action="/blogs/<%= blog.id %>/comments/<%=comment.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button>Delete comment</button>
-
-      </form>
-      <% } %>
-    <% }) %>
-
-  </section>
 <%# //-------------------comments------------------------%>
   <% if(locals.isAuthenticated) { %>
     <section>

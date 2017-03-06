@@ -6,29 +6,29 @@ const blogsController = require('../controllers/blogs');
 const secureRoute = require('../lib/secureRoute');
 // const upload = require('../lib/upload');
 const statics = require('../controllers/statics');
+const usersController = require('../controllers/users');
 
-//-------------------HOME--------------------
+//-------------------STATICS: HOME, CONTACT, ABOUT--------------
 
 router.route('/')
   .get(statics.index);
+router.route('/contact')
+  .get(statics.contact);
+router.route('/about')
+  .get(statics.about);
 
-  //--------Once registered, shows user's profile to them----
-
-router.route('/user')
-  .get(secureRoute, registrations.show);
-
-//----------see allblogs????---------------
+//----------SEE ALL BLOGS---------------
 
 router.route('/blogs')
   .get(blogsController.index)
   .post(secureRoute, blogsController.create);
 
-//-------------create new blog----------
+//-------------NEW BLOG----------
 
 router.route('/blogs/new')
   .get(secureRoute, blogsController.new);
 
-//--------edit or update a blog---------------
+//--------SHOW/EDIT/DELETE BLOG--------------
 
 router.route('/blogs/:id')
   .get(blogsController.show)
@@ -38,9 +38,7 @@ router.route('/blogs/:id')
 router.route('/blogs/:id/edit')
   .get(secureRoute, blogsController.edit);
 
-//--See all avaliable profiles who have registered with the site---
-
-//add comments
+//---------------SHOW/DELETE/EDIT COMMENTS----------------------------
 
 router.route('/blogs/:id/comments')
   .post(secureRoute, blogsController.createComment);
@@ -48,23 +46,27 @@ router.route('/blogs/:id/comments')
 router.route('/blogs/:id/comments/:commentId')
   .delete(secureRoute, blogsController.deleteComment);
 
-//-------------------------------------------
-//EDIT COMMENTS
-
 router.route('/blogs/:id/editComments')
   .post(secureRoute, blogsController.editComment);
 
-//-------------------------------------------
+//---------------------SHOW ALL PROFILES---------------
 
-router.route('/users');
+router.route('/users')
+  .get(usersController.index);
 
-//----------------register---------------------
+//--------------SHOW ONE PROFILE -------------------
+
+router.route('/users/:id')
+  .get(usersController.show);
+
+//----------------REGISTER---------------------
 
 router.route('/register')
   .get(registrations.new)
-  .post(registrations.create);
+  .post(registrations.create)
+  .delete(secureRoute, registrations.delete);
 
-//-----------login-------------------
+//---------------------LOGIN-------------------
 
 router.route('/login')
   .get(sessions.new)
@@ -75,15 +77,15 @@ router.route('/login')
 router.route('/oauth/github')
   .get(oauth.github);
 
-//------------------logout-----------------
+  //------login with facebook------------
+
+// router.route('/oauth/facebook')
+//   .get(oauth.facebook);
+
+//------------------LOGOUT-----------------
 
 router.route('/logout')
   .get(sessions.delete);
-
-  //------Delete account button -------------
-
-router.route('/profile')
-  .delete(secureRoute, registrations.delete);
 
 // catch all 404 error page
 router.all('*', (req, res) => res.notFound());

@@ -27,29 +27,25 @@ User
 
     return Blog
       .create([{
-        username: 'hannah',
         dish: 'Apple Pie',
         image: '../public/css/images/japan.jpg',
         description: 'homemade apple very tasty',
-        recipie: 'apples go in pastry',
-        tag: 'apple'
-        // createdBy: 'hannah'
+        tag: 'apple',
+        createdBy: users[1]
       },{
-        username: 'hannah',
+
         dish: 'Chocolate brownie',
         image: '../public/css/images/japan.jpg',
         description: 'great with orange zest too',
-        recipie: 'apples go in pastry',
-        tag: 'chocolate'
-        // createdBy: 'hannah'
+        tag: 'chocolate',
+        createdBy: users[1]
       },{
-        username: 'tom',
+
         dish: 'Cheese Burger',
         image: '../public/css/images/japan.jpg',
         description: 'quick easy to make',
-        recipie: 'beef burger, bun, cheese nom!',
-        tag: 'beef'
-        // createdBy: 'tom'
+        tag: 'beef',
+        createdBy: users[0]
       }]);
   })
   .then((blogs) => {

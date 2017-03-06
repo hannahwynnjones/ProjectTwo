@@ -5,6 +5,8 @@ const Blog = require('../models/blog');
 function blogsIndex(req, res, next) {
   Blog
     .find()
+    .populate('createdBy')
+    .exec()
     .then((blogs) => res.render('blogs/index', { blogs }))
     .catch(next);
 }
@@ -16,6 +18,7 @@ function blogsNew(req, res) {
 }
 
 function blogsCreate(req, res, next) {
+  req.body.createdBy = req.user;
   Blog
     .create(req.body)
     .then(() => res.redirect('/blogs'))
@@ -27,6 +30,8 @@ function blogsCreate(req, res, next) {
 function blogsShow(req, res, next) {
   Blog
     .findById(req.params.id)
+    .populate('createdBy')
+    .exec()
     .then((blog) => {
       if(!blog) return res.notFound();
       res.render('blogs/show', { blog });
@@ -39,9 +44,10 @@ function blogsShow(req, res, next) {
 function blogsEdit(req, res, next) {
   Blog
     .findById(req.params.id)
+    .exec()
     .then((blog) => {
       if(!blog) return res.notFound();
-      res.render('blogs/edit', { blog});
+      res.render('blogs/edit', { blog });
     })
     .catch(next);
 }
@@ -49,6 +55,7 @@ function blogsEdit(req, res, next) {
 function blogsUpdate(req, res, next) {
   Blog
     .findById(req.params.id)
+    .exec()
     .then((blog) => {
       if(!blog) return res.notFound();
 
@@ -67,6 +74,7 @@ function blogsUpdate(req, res, next) {
 function blogsDelete(req, res, next) {
   Blog
     .findById(req.params.id)
+    .exec()
     .then((blog) => {
       if(!blog) return res.notFound();
       return blog.remove();

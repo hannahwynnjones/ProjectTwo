@@ -16,9 +16,10 @@ function createRoute(req, res, next) {
       next();
     });
 }
-//------------------------------------------------------
+
+
 function showRoute(req, res) {
-  return res.render('registrations/show');
+  return res.render('registrations/show'); ///not sure why this isnt '/'
 }
 
 function deleteRoute(req, res, next) {
