@@ -12,8 +12,10 @@ const usersController = require('../controllers/users');
 
 router.route('/')
   .get(statics.index);
+
 router.route('/contact')
   .get(statics.contact);
+
 router.route('/about')
   .get(statics.about);
 

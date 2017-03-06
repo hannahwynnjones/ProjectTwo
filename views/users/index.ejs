@@ -1,4 +1,17 @@
-<h1>index</h1>
+<h1>Rate My Bake Users</h1>
+
+<% if(locals.isAuthenticated) { %>
 
 
-<%# loop for each user, displaying all profiles%>
+
+<% users.forEach((user) => { %>
+  <div class="index">
+
+    <a href="/users/<%= user.id %>">
+      <img src="<%= user.profilePic %>" alt="<%= user.username %>">
+      <h2 class="index"><%= user.username %></h2>
+    </a>
+
+  </div>
+<% }) %>
+<% } %>

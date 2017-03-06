@@ -17,3 +17,13 @@
     <% }) %>
 
   </section>
+
+
+FROM edit.blog section - for editing the images on the page:
+
+<%# may need to look at images later when i add them %>
+
+  <div class="form-group">
+    <label>Pictures</label>
+    <input type="text" name="images[]" class="form-control" value="<%= blog.images[0] %>">
+  </div>
