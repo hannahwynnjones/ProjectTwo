@@ -4,12 +4,69 @@
   <p class="show">
     <p><%= blog.createdBy.username %> <p>
     <p><%= blog.description %></p>
-    <p><%= blog.recipie %></p>
+    <p><%= blog.recipe %></p>
+</p>
 
-<button type="button" name="generate"></button>
-<div class="recipieDiv"></div>
-  </p>
+<%# --------------------Recipie Box---------------%>
 
-  <p class="show">
-    <% while(blog.stars--) { %> &star; <% } %>
-  </p>
+<div class="recipieBox">
+
+<h4>Recipie ideas based on your dish:</h4>
+
+    <% recipes.results.forEach((recipe) => { %>
+      <a href="<%= recipe.href %>" target="_blank"><%= recipe.title %></a>
+    <% }) %>
+
+</div>
+    <p class="show">
+      <% while(blog.stars--) { %> &star; <% } %>
+    </p>
+
+<%# -----------------see comment---------------%>
+
+  <section>
+    <h4>Comments</h4>
+    <% blog.comments.forEach((comment) => { %>
+      <p><%= comment.content %></p>
+      <small>Comments from : <%= comment.createdBy.username %></small>
+
+
+    <% if(locals.isAuthenticated && comment.ownedBy(user)) { %>
+      <form method="POST" action="/blogs/<%= blog.id %>/comments/<%=comment.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Delete comment</button>
+      </form>
+
+      <% } %>
+    <% }) %>
+
+  </section>
+
+  <% if(locals.isAuthenticated) { %>
+    <section>
+      <h5>Leave a comment</h5>
+
+      <form method="POST" action="/blogs/<%= blog.id %>/comments">
+        <textarea name="content" id="content" placeholder="Comment"></textarea>
+        <br>
+        <button class="button">Leave a comment</button>
+      </form>
+    </section>
+  <% } %>
+
+  <%# -----------------editing blog-------------------------%>
+
+    <% if(blog.createdBy.username === user.username) { %>
+    <section>
+      <a href="/blogs/<%= blog.id %>/edit">Edit <%= blog.dish %> Blog</a>
+    </section>
+    <% } %>
+  </div>
+
+  <%# ---------------------deleting blog----------------%>
+  <% if(blog.createdBy.username === user.username) { %>
+    <form method="POST" action="/blogs/<%= blog.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-danger">Delete <%= blog.dish %> Blog</button>
+    </form>
+  <% } %>

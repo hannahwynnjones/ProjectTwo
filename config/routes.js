@@ -7,16 +7,14 @@ const secureRoute = require('../lib/secureRoute');
 // const upload = require('../lib/upload');
 const statics = require('../controllers/statics');
 const usersController = require('../controllers/users');
-const recipies = require('../controllers/recipies');
+// const recipes = require('../controllers/recipes');
 
 //-------------------STATICS: HOME, CONTACT, ABOUT--------------
 
 router.route('/')
   .get(statics.index);
-
 router.route('/contact')
   .get(statics.contact);
-
 router.route('/about')
   .get(statics.about);
 
@@ -35,7 +33,6 @@ router.route('/blogs/new')
 
 router.route('/blogs/:id')
   .get(blogsController.show)
-  .get(recipies.getRecipies)
   .put(secureRoute, blogsController.update)
   .delete(secureRoute, blogsController.delete);
 
@@ -61,7 +58,8 @@ router.route('/users')
 //--------------SHOW ONE PROFILE -------------------
 
 router.route('/users/:id')
-  .get(usersController.show);
+  .get(usersController.show)
+  .get(blogsController.show);
 
 //----------------REGISTER---------------------
 

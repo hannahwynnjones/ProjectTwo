@@ -1,4 +1,5 @@
 const Blog = require('../models/blog');
+const rp = require('request-promise');
 
 //-------index shows everyone's blogs--
 
@@ -25,7 +26,7 @@ function blogsCreate(req, res, next) {
     .catch(next);
 }
 
-//--------------------show individual blogs---------------
+//-----------------show individual blogs---------------
 
 function blogsShow(req, res, next) {
   Blog
@@ -35,10 +36,21 @@ function blogsShow(req, res, next) {
     .exec()
     .then((blog) => {
       if(!blog) return res.notFound();
-      res.render('blogs/show', { blog });
+
+      return rp({
+        method: 'GET',
+        url: `http://www.recipepuppy.com/api/?&q=${blog.tag}`,
+        json: true
+      })
+      .then((recipes) => {
+        console.log(recipes);
+        res.render('blogs/show', { blog, recipes });
+      });
     })
     .catch(next);
 }
+
+// http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3
 
 //-----------edit blogs----------------------
 

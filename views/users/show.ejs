@@ -12,15 +12,13 @@
   </div>
   <div class="dishDiv">
     <h2>Your Dishs</h2>
-          <p>if you have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
+          <p>If you have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
       <% blogs.forEach((blog) => { %>
-        <% if (blog.createdBy.username === user.username) { %>
           <a href="/blogs/<%= blog.id %>">
           <img src="<%= blog.image %>" alt="<%= blog.dish %>">
           <h2><%= blog.dish %></h2>
           </a>
 
-        <% } %>
 
       <% }) %>
   </div>

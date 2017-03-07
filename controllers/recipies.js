@@ -1,9 +1,9 @@
 
-function getRecipies() {
+function getrecipes() {
   event.preventDefault();
-  $('.generate').on('click', getRecipies);
-  const query = $(`.recipieTag`).val();
-  $('.recipieDiv').empty();
+  $('.generate').on('click', getrecipes);
+  const query = $(`.recipeTag`).val();
+  $('.recipeDiv').empty();
 
   $.ajax({
 
@@ -16,7 +16,7 @@ function getRecipies() {
     $.each(response, (index, title) => {
       console.log('hi there');
       // for each gif object in the array, we do this:
-      $('.recipieDiv').append(`
+      $('.recipeDiv').append(`
         <p>${title}</p>
       `);
     });
@@ -25,5 +25,5 @@ function getRecipies() {
 }
 
 module.exports = {
-  getRecipies
+  getrecipes
 };
