@@ -10,11 +10,6 @@
   </div>
 
   <div class="form-group">
-    <label for="image">Pictures</label>
-    <input type="file" name="image" id="image">
-  </div>
-
-  <div class="form-group">
     <label for="description">Description</label>
     <textarea name="description">recipes, Description and your comments</textarea>
   </div>
@@ -25,4 +20,13 @@
   </div>
 
   <button class="addBlog">Add Blog</button>
+</form>
+
+<h3>Add an Image</h3>
+<form method="POST" action="/user/images" enctype="multipart/form-data">
+  <div>
+    <label for="filename">Image file</label>
+    <input type="file" name="filename" id="filename">
+  </div>
+  <button>Add</button>
 </form>

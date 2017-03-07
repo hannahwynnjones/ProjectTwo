@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const imageSchema = new mongoose.Schema({
+  filename: { type: String },
+  caption: { type: String }
+});
+
+imageSchema.virtual('src')
+  .get(function getImageSRC(){
+    if(!this.filename) return null;
+    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
+  });
+
 const userSchema = new mongoose.Schema({
   email: { type: String },
   username: { type: String },
@@ -11,6 +22,13 @@ const userSchema = new mongoose.Schema({
   images: [{ type: String }],
   facebookId: { type: String }
 });
+
+userSchema.virtual('profileImageSRC')
+  .get(function getProfileImageSRC(){
+    if(!this.profileImage) return null;
+    if(this.profileImage.match(/^http/)) return this.profileImage;
+    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.profileImage}`;
+  });
 
 userSchema
   .virtual('passwordConfirmation')
