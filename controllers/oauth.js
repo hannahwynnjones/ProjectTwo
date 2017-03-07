@@ -48,7 +48,7 @@ function github(req, res, next) {
   })
   .catch(next);
 }
-
+//----------------FACEBOOK-----------------
 function facebook(req, res, next) {
 
   console.log(req.query);
@@ -76,7 +76,7 @@ function facebook(req, res, next) {
     console.log(profile);
     return User.findOne({email: profile.email })//first check their emails in case they already exist on our systm
       .then((user) => {
-        if(!user) { 
+        if(!user) {
           user = new User({
             username: profile.name,
             email: profile.email

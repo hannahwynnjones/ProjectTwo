@@ -1,5 +1,7 @@
+
 function getRecipies() {
   event.preventDefault();
+  $('.generate').on('click', getRecipies);
   const query = $(`.recipieTag`).val();
   $('.recipieDiv').empty();
 

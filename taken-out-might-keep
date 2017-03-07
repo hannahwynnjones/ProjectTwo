@@ -27,3 +27,35 @@ FROM edit.blog section - for editing the images on the page:
     <label>Pictures</label>
     <input type="text" name="images[]" class="form-control" value="<%= blog.images[0] %>">
   </div>
+
+
+  <%# //-------------------comments------------------------%>
+    <% if(locals.isAuthenticated) { %>
+      <section>
+        <h4>Leave a comment</h4>
+        <p><%= comment.content %></p>
+        <small><%= comment.createdBy.username %></small>
+
+        <form method="POST" action="/blogs/<%= blog.id %>/comments">
+          <textarea name="content" id="content" placeholder="Comment"></textarea>
+          <button class="button">Leave a comment</button>
+        </form>
+      </section>
+    <% } %>
+
+  <%# -----------------editing blog-------------------------%>
+
+    <% if(blog.createdBy.username === user.username) { %>
+    <section>
+      <a href="/blogs/<%= blog.id %>/edit">Edit <%= blog.dish %> Blog</a>
+    </section>
+    <% } %>
+  </div>
+
+  <%# ---------------------deleting blog----------------%>
+  <% if(blog.createdBy.username === user.username) { %>
+    <form method="POST" action="/blogs/<%= blog.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-danger">Delete <%= blog.dish %> Blog</button>
+    </form>
+  <% } %>
