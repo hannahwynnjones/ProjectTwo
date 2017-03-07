@@ -19,31 +19,22 @@ function blogsNew(req, res) {
 }
 
 function blogsCreate(req, res, next) {
-  if(req.file) req.body.image = req.file.key;
-  //
-  // req.body = Object.assign({}, req.body);
-  //
-  // req.body.image.push(req.body);
-  //
-  // req.user
-  //   .save()
-  //   .then(() => res.redirect('/user'))
-  //   .catch((err) => {
-  //     console.log(err);
-  //     if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
-  //     next(err);
-  //   });
-
+  req.body.createdBy = req.user;
   Blog
-    .create(req.body)
-    .then(() => res.redirect('/login'))
-    .catch((err) => {
-      if(err.name === 'ValidationError') return res.badRequest('/register', err.toString());
-      next(err);
-    });
-
-
+ .create(req.body)
+ .then(() => res.redirect('/blogs'))
+  .catch(next);
 }
+    // .findById(req.params.id)
+    // .populate('createdBy')
+    // .populate('comments.createdBy')
+    // .exec()
+    // .then((blog) => {
+    //   if(!blog) return res.notFound();
+    // })
+    // .catch(next);
+
+
 
 //-----------------show individual blogs---------------
 

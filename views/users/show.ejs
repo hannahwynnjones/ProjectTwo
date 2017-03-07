@@ -1,7 +1,8 @@
 <h1>show</h1>
 
 <%= user.username %>
-
+<img src="<%= user.profilePic %>" alt="<%= user.username %>">
+<img src="<%= user.image %>" alt="<%= user.username %>">
 <% if(locals.isAuthenticated) { %>
 
   <div class="index">
@@ -16,7 +17,7 @@
           <p>If you have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
       <% blogs.forEach((blog) => { %>
           <a href="/blogs/<%= blog.id %>">
-          <img src="<%= image.src %>" alt="<%= blog.dish %>">
+
           <h2><%= blog.dish %></h2>
           </a>
 
