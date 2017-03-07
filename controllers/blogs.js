@@ -19,11 +19,30 @@ function blogsNew(req, res) {
 }
 
 function blogsCreate(req, res, next) {
-  req.body.createdBy = req.user;
+  if(req.file) req.body.image = req.file.key;
+  //
+  // req.body = Object.assign({}, req.body);
+  //
+  // req.body.image.push(req.body);
+  //
+  // req.user
+  //   .save()
+  //   .then(() => res.redirect('/user'))
+  //   .catch((err) => {
+  //     console.log(err);
+  //     if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
+  //     next(err);
+  //   });
+
   Blog
     .create(req.body)
-    .then(() => res.redirect('/blogs'))
-    .catch(next);
+    .then(() => res.redirect('/login'))
+    .catch((err) => {
+      if(err.name === 'ValidationError') return res.badRequest('/register', err.toString());
+      next(err);
+    });
+
+
 }
 
 //-----------------show individual blogs---------------
@@ -153,24 +172,24 @@ function editCommentRoute(req, res, next) {
 // function newImageRoute(req, res) {
 //   res.render('users/newImage');
 // }
-
-function createImageRoute(req, res, next) {
-  if(req.file) req.body.filename = req.file.key;
-
-  // For some reason multer's req.body doesn't behave like body-parser's
-  req.body = Object.assign({}, req.body);
-
-  req.user.images.push(req.body);
-
-  req.user
-    .save()
-    .then(() => res.redirect('/user'))
-    .catch((err) => {
-      console.log(err);
-      if(err.name === 'ValidationError') return res.badRequest('/user/images/new', err.toString());
-      next(err);
-    });
-}
+//
+// function createImageRoute(req, res, next) {
+//   if(req.file) req.body.filename = req.file.key;
+//
+//   // For some reason multer's req.body doesn't behave like body-parser's
+//   req.body = Object.assign({}, req.body);
+//
+//   req.user.images.push(req.body);
+//
+//   req.user
+//     .save()
+//     .then(() => res.redirect('/user'))
+//     .catch((err) => {
+//       console.log(err);
+//       if(err.name === 'ValidationError') return res.badRequest('/user', err.toString());
+//       next(err);
+//     });
+// }
 
 
 module.exports = {
@@ -183,7 +202,7 @@ module.exports = {
   delete: blogsDelete,
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute,
-  editComment: editCommentRoute,
+  editComment: editCommentRoute
   // newImage: newImageRoute,
-  createImage: createImageRoute
+  // createImage: createImageRoute
 };

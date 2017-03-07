@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const imageSchema = new mongoose.Schema({
-  filename: { type: String },
-  caption: { type: String }
+  filename: { type: String }
 });
 
 imageSchema.virtual('src')
@@ -19,7 +18,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   githubId: { type: Number },
   profilePic: { type: String },
-  images: [{ type: String }],
+  images: { type: String },
   facebookId: { type: String }
 });
 
