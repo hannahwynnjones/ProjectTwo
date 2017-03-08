@@ -1,28 +1,35 @@
-<h1>Add a blog to you account</h1>
+<section class="about" id="loginId" style="background: url('../assets/images/apples.jpg');   height: 600px; width: 900px; background-position: center; background-size: cover; margin: -40px 0 20px; z-index: 100;">
+
+<div class="loginBox">
+
+<h1>Add a dish to you account</h1>
 
 <form method="POST" action="/blogs" enctype="multipart/form-data">
-<%# <form method="POST" action="/blogs" enctype="multipart/form-data">%>
-<%# added username to link to edit/delete buttons, if it works without, i'll remove this%>
 
   <div class="form-group">
-    <label for="dish">Dish</label>
+    <label class="newLabel" for="dish">Dish</label>
     <textarea name="dish"></textarea>
   </div>
 
   <div class="form-group">
-    <label for="description">Description</label>
+    <label class="newLabel" for="description">Description</label>
     <textarea name="description" placeholder="recipes, Description and your comments"></textarea>
   </div>
 
   <div class="form-group">
-    <label class="recipeTag" for="tag">Tag</label>
+    <label class="recipeTag newLabel" for="tag">Tag</label>
     <textarea name="tag" placeholder="One work to describe your dish"></textarea>
   </div>
 
   <div class="form-group">
-    <label for="filename">Image file</label>
-    <input type="file" name="filename" id="filename">
+    <label class="newLabel" for="filename">Image file</label>
+    <input class="newLabel addBlog" type="file" name="filename" id="filename">
   </div>
 
-  <button class="addBlog">Add Blog</button>
+  <button class="addBlog">Add dish</button>
 </form>
+
+</div>
+
+
+</section>

@@ -1,30 +1,51 @@
+<section>
+
 <div>
-  <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
-  <h2 class="show"><%= blog.dish %></h2>
+
+  <h1 class="show"><%= blog.dish %></h1>
+    <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
   <p class="show">
     <p><%= blog.createdBy.username %> <p>
     <img id="profilePic" src="<%= user.image %>">
     <p><%= blog.description %></p>
     <p><%= blog.recipe %></p>
 </p>
-
+</div>
 <%# --------------------Recipie Box---------------%>
 
-<div class="recipieBox">
+<div class="recipieBox showBlog">
 
 <h4>Recipie ideas based on your dish:</h4>
     <% recipes.results.forEach((recipe) => { %>
       <a href="<%= recipe.href %>" target="_blank"><%= recipe.title %></a>
     <% }) %>
 
-</div>
+
     <p class="show">
       <% while(blog.stars--) { %> &star; <% } %>
     </p>
+</div>
+<%# -----------------editing blog-------------------------%>
 
+<div class="showBlog">
+  <% if(blog.createdBy.username === user.username) { %>
+  <button>
+    <a href="/blogs/<%= blog.id %>/edit">Edit <%= blog.dish %> Blog</a>
+  </button>
+  <% } %>
+
+
+<%# ---------------------deleting blog----------------%>
+<% if(blog.createdBy.username === user.username) { %>
+  <form method="POST" action="/blogs/<%= blog.id %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-danger">Delete <%= blog.dish %> Blog</button>
+  </form>
+<% } %>
+</div>
 <%# -----------------see comment---------------%>
 
-  <section>
+<div class="showBlog">
     <h4>Comments</h4>
     <% blog.comments.forEach((comment) => { %>
       <p><%= comment.content %></p>
@@ -37,8 +58,10 @@
       <% } %>
     <% }) %>
 
-  </section>
 
+
+</div>
+<div class="showBlog">
   <% if(locals.isAuthenticated) { %>
     <section>
       <h5>Leave a comment</h5>
@@ -49,20 +72,5 @@
       </form>
     </section>
   <% } %>
-
-  <%# -----------------editing blog-------------------------%>
-
-    <% if(blog.createdBy.username === user.username) { %>
-    <section>
-      <a href="/blogs/<%= blog.id %>/edit">Edit <%= blog.dish %> Blog</a>
-    </section>
-    <% } %>
-  </div>
-
-  <%# ---------------------deleting blog----------------%>
-  <% if(blog.createdBy.username === user.username) { %>
-    <form method="POST" action="/blogs/<%= blog.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="btn btn-danger">Delete <%= blog.dish %> Blog</button>
-    </form>
-  <% } %>
+</div>
+  </section>

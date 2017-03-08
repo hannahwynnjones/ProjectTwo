@@ -4,13 +4,22 @@
 
     <div class="dishDiv">
     <h2>Dishs</h2>
+            <div class="row">
     <% blogs.forEach((blog) => { %>
-    <a href="/blogs/<%= blog.id %>">
-    <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
-    <h2><%= blog.dish %></h2>
-    </a>
+
+    <div class="col-lg-4 col-md-6">
+
+      <a href="/blogs/<%= blog.id %>">
+      <img src="<%= blog.imageSRC %>" class="img-fluid img-thumbnail" alt="<%= blog.dish %>">
+      <h2><%= blog.dish %></h2>
+      </a>
+
+
+  </div>
+
 
     <% }) %>
+  </div>
   </div>
     <% } %>
 

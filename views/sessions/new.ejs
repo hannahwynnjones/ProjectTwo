@@ -1,11 +1,16 @@
+<section id="loginId" style="background: url('../assets/images/oranges.jpg');   height: 600px; width: 800px; background-position: center; background-size: cover; margin: -40px 0 20px; z-index: 100;">
+
+<div class="loginBox">
+
+
 <h1>Login</h1>
 
 <form method="POST" action="/login">
-  <div>
+  <div class="loginForm">
     <label for="email">Email</label>
     <input type="text" name="email" id="email" required>
   </div>
-  <div>
+  <div  class="loginForm">
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
   </div>
@@ -14,6 +19,14 @@
 </form>
 
 <br>
-<a href="<%= oauth.github.getLoginURL() %>" target="blank">Login with GitHub</a>
+<br>
+<br>
+<div class="loginLinks">
 
-<a href="<%= oauth.facebook.getLoginURL() %>" target="blank">Login with facebook</a>
+<a href="<%= oauth.github.getLoginURL() %>" target="blank">- Login with GitHub -</a>
+<a href="<%= oauth.facebook.getLoginURL() %>" target="blank">- Login with facebook -</a>
+<a href="/register"> - Register - </a>
+</div>
+</div>
+
+</section>

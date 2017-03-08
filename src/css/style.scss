@@ -2,10 +2,15 @@ body {
   background-color: #242322;
   font-family: 'Cormorant Garamond', serif;
   color: #807a75;
+  border-radius: 2px;
+  margin-top: 100px;
+  margin-bottom: 40px;
+  margin-left: 135px;
+  margin-right: 135px;
 }
 
 $darkGrey: #242322;
-$lghtGrey: #807a75;
+$lightGrey: #827d78;
 
 a {
   color: white;
@@ -17,8 +22,36 @@ a {
   }
 }
 
+/* visited link */
+a:visited {
+    color: grey;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+
 img {
-  height: 300px;
+  max-height: 300px;
+  max-width: 200px;
+}
+
+button {
+  border-width: medium;
+  border-color: white;
+  margin: 10px;
+  padding: 5px 20px;
+  background-color: $lightGrey;
+  color: $darkGrey;
+  border-radius: 5px;
+
 }
 
   #profilePic {
@@ -28,16 +61,10 @@ img {
     border-radius: 13px;
   }
 
-
-
-.nav {
-  background-color: rgba(20, 20, 20, 0);
-}
-
 section {
   text-align: center;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   position: relative;
   border-bottom: 2px solid white;
   &:last-of-type {
@@ -56,14 +83,26 @@ section {
   background-position: center;
   background-size: cover;
   position: relative;
+  margin: -40px 0 20px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+    .image {
+    background-position: center;
+    background-size: cover;
+    &:after {
+      content: "";
+      padding-bottom: 100%;
+      display: block;
+    }
+  }
   h1 {
-    font-size: 40px;
+    font-size: 47px;
     position: absolute;
     // top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-font-family: 'Cormorant Garamond', serif;
+    font-family: 'Bad Script', cursive;
   }
   #heroLinks {
     height: 200px;
@@ -74,21 +113,85 @@ font-family: 'Cormorant Garamond', serif;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
-/* visited link */
-a:visited {
-    color: grey;
+
+h1 {
+  font-size: 47px;
+  padding: 3px;
+  color: white;
+  font-family: 'Bad Script', cursive;
 }
 
-/* mouse over link */
-a:hover {
-    color: white;
+div.box2 {
+  background: $lightGrey;
+  color: white;
+  display: inline-block;
+  margin: 10px;
+  padding: 15px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  top: 50%;
+  left: 10%;
+
 }
 
-/* selected link */
-a:active {
-    color: blue;
+#loginId {
+
+  .loginBox {
+    background-color: rgba(130, 125, 120, 0.8);
+    padding: 30px;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    z-index: 1000;
+    color: $darkGrey;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 40px;
+    .newLabel {
+      font-size: 18px;
+      padding: 0px;
+    }
+    .addBlog {
+      font-size: 20px;
+    }
+  }
+  a {
+    color: $darkGrey;
+    display:block;
+    text-align:center;
+    font-weight:400;
+    font-size: 15px;
+  }
+
+  .loginLinks {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  button {
+    float: right;
+    position: relative;
+    margin-right: 40px;
+
+  }
+  h1 {
+
+    padding: 3px 3px 30px 20px;
+
+  }
+  .loginForm {
+    margin: 8px 0;
+
+  }
+}
+
+.showBlog {
+  margin: 40px;
 }
 
 .footer {
@@ -96,4 +199,88 @@ a:active {
   margin: 0 30px;
   text-align: center;
   position: relative;
+}
+
+.about {
+  background-color: rgba(130, 125, 120, 0.8);
+  padding: 30px;
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  z-index: 1000;
+  color: $darkGrey;
+  font-weight: bold;
+  font-size: 20px;
+  height: 520px;
+}
+
+.contact {
+  background-color: rgba(130, 125, 120, 0.8);
+  padding: 30px;
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  z-index: 1000;
+  color: $darkGrey;
+  font-weight: bold;
+  font-size: 20px;
+  height: 220px;
+  top: 55%;
+  left: 0%;
+}
+
+
+
+@media only screen and (max-width: 960px) {
+  body {
+    margin: 20px;
+
+    #hero {
+      // height: 100vh;
+      // height: 400px;
+      width: 800px;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      margin-top: 10px;
+
+      h1 {
+        font-size: 30px;
+        padding-top: 80px;
+      }
+      #herolinks {
+        font-size: 20px;
+        top: 70%;
+
+      }
+    }
+
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  body {
+    margin: 5px;
+
+    #hero {
+      // height: 100vh;
+      // height: 400px;
+      width: 400px;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      margin-top: 10px;
+
+      h1 {
+        font-size: 30px;
+        padding-top: 80px;
+      }
+      #herolinks {
+        font-size: 20px;
+        top: 70%;
+
+      }
+    }
+
+  }
 }

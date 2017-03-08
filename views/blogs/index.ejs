@@ -1,22 +1,20 @@
-<h1>Blogs</h1>
+<h1>Dishs</h1>
 <p>Once <a href="/login">logged in</a>, click on the blog to add comments.</p>
 
 <% if(locals.isAuthenticated) { %>
-  <a href="/blogs/new" class="btn btn-primary">Add</a>
+  <a href="/blogs/new" class="button">Add</a>
 <% } %>
-
-<% blogs.forEach((blog) => { %>
-  <div class="index">
-    <a href="/blogs/<%= blog.id %>">
-      <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
-      <h2 class="index"><%= blog.dish %></h2>
-      <p class="index">
-        <%= blog.username %> <br>
-      </p>
-
-      <p>
-        <% while(blog.stars--) { %> &star; <% } %>
-      </p>
-    </a>
+  <div class="row">
+    <% blogs.forEach((blog) => { %>
+      <div class="col-lg-4 col-md-6">
+        <a href="/blogs/<%= blog.id %>">
+          <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
+          <h2 class="index"><%= blog.dish %></h2>
+          <p class="index">
+            <%= blog.username %> <br>
+            <% while(blog.stars--) { %> &star; <% } %>
+          </p>
+        </a>
+      </div>
+    <% }) %>
   </div>
-<% }) %>
