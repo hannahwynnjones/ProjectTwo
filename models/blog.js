@@ -25,4 +25,10 @@ const blogSchema = new mongoose.Schema({
   timestamps: true
 });
 
+blogSchema.virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.image) return null;
+    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.image}`;
+  });
+
 module.exports = mongoose.model('Blog', blogSchema);

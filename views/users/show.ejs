@@ -17,7 +17,7 @@
           <p>If you have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
       <% blogs.forEach((blog) => { %>
           <a href="/blogs/<%= blog.id %>">
-
+          <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
           <h2><%= blog.dish %></h2>
           </a>
 

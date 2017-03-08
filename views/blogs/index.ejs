@@ -8,7 +8,7 @@
 <% blogs.forEach((blog) => { %>
   <div class="index">
     <a href="/blogs/<%= blog.id %>">
-      <img src="<%= blog.image %>" alt="<%= blog.dish %>">
+      <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
       <h2 class="index"><%= blog.dish %></h2>
       <p class="index">
         <%= blog.username %> <br>

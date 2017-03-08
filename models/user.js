@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const imageSchema = new mongoose.Schema({
-  filename: { type: String }
-});
-
-imageSchema.virtual('src')
-  .get(function getImageSRC(){
-    if(!this.filename) return null;
-    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
-  });
+// const imageSchema = new mongoose.Schema({
+//   filename: { type: String }
+// });
+//
+// imageSchema.virtual('src')
+//   .get(function getImageSRC(){
+//     if(!this.filename) return null;
+//     return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
+//   });
 
 const userSchema = new mongoose.Schema({
   email: { type: String },

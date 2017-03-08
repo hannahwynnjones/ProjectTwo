@@ -4,10 +4,9 @@ const sessions = require('../controllers/sessions');
 const oauth = require('../controllers/oauth');
 const blogsController = require('../controllers/blogs');
 const secureRoute = require('../lib/secureRoute');
-// const upload = require('../lib/upload');
+const upload = require('../lib/upload');
 const statics = require('../controllers/statics');
 const usersController = require('../controllers/users');
-
 // const recipes = require('../controllers/recipes');
 
 //-------------------STATICS: HOME, CONTACT, ABOUT--------------
@@ -23,9 +22,7 @@ router.route('/about')
 
 router.route('/blogs')
   .get(blogsController.index)
-  .post(secureRoute, blogsController.create);
-  //
-  // .post(secureRoute, upload.single('filename'));
+  .post(secureRoute, upload.single('filename'), blogsController.create);
 
 //-------------NEW BLOG----------
 
@@ -41,10 +38,6 @@ router.route('/blogs/:id')
 
 router.route('/blogs/:id/edit')
   .get(secureRoute, blogsController.edit);
-
-//------IMAGES
-
-
 
 //---------------SHOW/DELETE/EDIT COMMENTS----------------------------
 

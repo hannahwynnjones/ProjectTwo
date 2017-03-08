@@ -20,21 +20,13 @@ function blogsNew(req, res) {
 
 function blogsCreate(req, res, next) {
   req.body.createdBy = req.user;
+  if(req.file) req.body.image = req.file.key;
+  
   Blog
- .create(req.body)
- .then(() => res.redirect('/blogs'))
-  .catch(next);
+    .create(req.body)
+    .then(() => res.redirect('/blogs'))
+    .catch(next);
 }
-    // .findById(req.params.id)
-    // .populate('createdBy')
-    // .populate('comments.createdBy')
-    // .exec()
-    // .then((blog) => {
-    //   if(!blog) return res.notFound();
-    // })
-    // .catch(next);
-
-
 
 //-----------------show individual blogs---------------
 
@@ -158,31 +150,6 @@ function editCommentRoute(req, res, next) {
   .catch(next);
 }
 
-//--------------------------IMAGES------------------------
-
-// function newImageRoute(req, res) {
-//   res.render('users/newImage');
-// }
-//
-// function createImageRoute(req, res, next) {
-//   if(req.file) req.body.filename = req.file.key;
-//
-//   // For some reason multer's req.body doesn't behave like body-parser's
-//   req.body = Object.assign({}, req.body);
-//
-//   req.user.images.push(req.body);
-//
-//   req.user
-//     .save()
-//     .then(() => res.redirect('/user'))
-//     .catch((err) => {
-//       console.log(err);
-//       if(err.name === 'ValidationError') return res.badRequest('/user', err.toString());
-//       next(err);
-//     });
-// }
-
-
 module.exports = {
   index: blogsIndex,
   new: blogsNew,
@@ -194,6 +161,4 @@ module.exports = {
   createComment: createCommentRoute,
   deleteComment: deleteCommentRoute,
   editComment: editCommentRoute
-  // newImage: newImageRoute,
-  // createImage: createImageRoute
 };
