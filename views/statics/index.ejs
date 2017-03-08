@@ -1,29 +1,26 @@
-<h1>project-2</h1>
+<section id="hero">
+  <h1>Rate my Bake</h1>
+<br>
 
+  <section id="heroLinks"
+  <% if(locals.isAuthenticated) { %>
 
-<% if(locals.isAuthenticated) { %>
+    <div class="row">
+        <a href="/users/<%= locals.user.id %>">Your Profile</a> <a>⋆</a>
+        <a href="/users">All profiles</a> <a>⋆</a>
+        <a href="/blogs">All blogs</a> <a>⋆</a>
+        <a href="/blogs/new">Add Blog</a>
 
-<p> you are logged in </p>
+    </div>
 
-<% } else { %>
+  <% } else { %>
 
-<p> you are NOT logged in!</p>
-
-<ul class="welcome links">
-  <li>
-  <a href="/register">Register</a>
-  </li>
-  <li>
-  <a href="/login">Login</a>
-  </li>
-  <li>
-  <a href="/about">About</a>
-  </li>
-  <li>
-  <a href="/contact">Contact</a>
-  </li>
-</ul>
-
-<% } %>
-
-<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"> </div>
+  <div class="row">
+    <a href="/register">Register</a> <a>⋆</a>
+    <a href="/login">Login</a> <a>⋆</a>
+    <a href="/about">About</a> <a>⋆</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <% } %>
+  </section>
+</section>

@@ -1,28 +1,17 @@
-<h1>show</h1>
-
-<%= user.username %>
-<img src="<%= user.profilePic %>" alt="<%= user.username %>">
-<img src="<%= user.image %>" alt="<%= user.username %>">
+<img id="profilePic" src="<%= user.image %>">
+<h1><%= user.username %></h1>
 <% if(locals.isAuthenticated) { %>
 
-  <div class="index">
-    <a href="/users/<%= user.id %>">
-      <img src="<%= user.profilePic %>" alt="<%= user.username %>">
-      <img src="<%= user.profileImageSRC %>" alt="<%= user.profileImageSRC %>"><br>
+    <div class="dishDiv">
+    <h2>Dishs</h2>
+    <% blogs.forEach((blog) => { %>
+    <a href="/blogs/<%= blog.id %>">
+    <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
+    <h2><%= blog.dish %></h2>
     </a>
 
+    <% }) %>
   </div>
-  <div class="dishDiv">
-    <h2>Your Dishs</h2>
-          <p>If you have not added any blogs click <a class="nav-link" href="/blogs/new">here</a> to add one now.</p>
-      <% blogs.forEach((blog) => { %>
-          <a href="/blogs/<%= blog.id %>">
-          <img src="<%= blog.imageSRC %>" alt="<%= blog.dish %>">
-          <h2><%= blog.dish %></h2>
-          </a>
+    <% } %>
 
-
-      <% }) %>
-  </div>
-
-<% } %>
+<p>Got a blog to add? click <a class="underlined" href="/blogs/new">here</a> to add one now</p>

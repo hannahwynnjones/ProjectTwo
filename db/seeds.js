@@ -28,7 +28,7 @@ User
     return Blog
       .create([{
         dish: 'Apple Pie',
-        image: '../public/css/images/japan.jpg',
+        image: '/assets/images/cake.jpg',
         description: 'homemade apple very tasty',
         tag: 'apple',
 
@@ -36,14 +36,14 @@ User
       },{
 
         dish: 'Chocolate brownie',
-        image: '../public/css/images/japan.jpg',
+        image: '../src/assets/images/cake.jpg',
         description: 'great with orange zest too',
         tag: 'chocolate',
         createdBy: users[1]
       },{
 
         dish: 'Cheese Burger',
-        image: '../public/css/images/japan.jpg',
+        image: 'assets/images/cake.jpg',
         description: 'quick easy to make',
         tag: 'beef',
         createdBy: users[0]

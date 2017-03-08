@@ -8,13 +8,7 @@
   </head>
   <body>
     <% include ./partials/navbar %>
-    <% for(const type in messages) { %>
-      <div class="alert alert-<%= type %>">
-        <div class="container">
-          <%= messages[type] %>
-        </div>
-      </div>
-    <% } %>
+
     <main class="container">
       <%- body %>
     </main>

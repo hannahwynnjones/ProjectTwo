@@ -21,7 +21,7 @@ function blogsNew(req, res) {
 function blogsCreate(req, res, next) {
   req.body.createdBy = req.user;
   if(req.file) req.body.image = req.file.key;
-  
+
   Blog
     .create(req.body)
     .then(() => res.redirect('/blogs'))
