@@ -2,15 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const s3 = require('../lib/s3');
 
-// const imageSchema = new mongoose.Schema({
-//   filename: { type: String }
-// });
-//
-// imageSchema.virtual('src')
-//   .get(function getImageSRC(){
-//     if(!this.filename) return null;
-//     return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
-//   });
 
 const userSchema = new mongoose.Schema({
   email: { type: String },
@@ -20,13 +11,20 @@ const userSchema = new mongoose.Schema({
   githubId: { type: Number },
   profilePic: { type: String },
   images: { type: String },
-  facebookId: { type: String },
-  ppImage: { type: String }
+  facebookId: { type: String }
+  // ppImage: { type: String }
 });
+
+userSchema
+  .virtual('ppImage')
+  .get(function getppImage(){
+    if(!this.filename) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`;
+    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
+  });
 
 userSchema.virtual('profileImageSRC')
   .get(function getProfileImageSRC(){
-    if(!this.profileImage) return null;
+    if(!this.profileImage) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`;
     if(this.profileImage.match(/^http/)) return this.profileImage;
     return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.profileImage}`;
   });
@@ -34,7 +32,7 @@ userSchema.virtual('profileImageSRC')
 userSchema
 .virtual('imageSRC')
 .get(function getImageSRC() {
-  if(!this.image) return null; //replace null with something that openes if image doesn't load
+  if(!this.image) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`; //replace null with something that openes if image doesn't load
   return `http://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.image}`;
 });
 

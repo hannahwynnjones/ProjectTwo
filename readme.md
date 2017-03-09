@@ -27,6 +27,6 @@ Problems & Challenges
 
 -testing was more difficult than i imagened as thre was no two models and the validation became an obstacal.  Instead of just looking at the blog model,
 
-
+-size of images, i'd use links rather tha store them in my docs.
 
 additonal stuff
