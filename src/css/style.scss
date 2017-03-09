@@ -213,23 +213,30 @@ div.box2 {
   font-size: 20px;
   height: 520px;
 }
+.contact2 {
+    padding: 30px 600px 30px 30px;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    top: 0%;
+    left: 0%;
 
-.contact {
-  background-color: rgba(130, 125, 120, 0.8);
-  padding: 30px;
-  display: inline-block;
-  text-align: left;
-  position: relative;
-  z-index: 1000;
-  color: $darkGrey;
-  font-weight: bold;
-  font-size: 20px;
-  height: 220px;
-  top: 55%;
-  left: 0%;
+  .contact {
+    background-color: rgba(130, 125, 120, 0.8);
+    padding: 30px;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    z-index: 1000;
+    color: $darkGrey;
+    font-weight: bold;
+    font-size: 20px;
+    height: 240px;
+    top: 0%;
+    left: 0%;
+  }
+
 }
-
-
 
 @media only screen and (max-width: 960px) {
   body {
