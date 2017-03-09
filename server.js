@@ -18,8 +18,6 @@ const authentication = require('./lib/authentication');
 //create an express app
 const app = express();
 
-
-
 //set up our template engine
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
@@ -55,14 +53,12 @@ app.use(session({
 // set up flash messages AFTER sessions.  flash messages use the session to store the message in - so flahs couldn't get hold of the sessions data if it is before the sessions.
 app.use(flash());
 
-
 //both of these require flash, so we put them here.
 app.use(customResponses);
 app.use(authentication);
 
 //set up our routes
 app.use(routes);
-
 
 //setup our error handler (always the last piece of middleware)
 app.use(errorHandler);
