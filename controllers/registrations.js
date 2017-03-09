@@ -5,6 +5,9 @@ function newRoute(req, res) {
 }
 
 function createRoute(req, res, next) {
+
+  if(req.file) req.body.image = req.file.key; //if multer did its job and re.file, then image is here we will store it.  key is always the file name.  so we are storing the file in amazon, and then storing the file name in our database.  file then stored in bucket and then amazon sends back the key (file name) and file size etc.  we save the user data in our datebase inc file name of image.  we then re-direct client to profile page after everything has been uploaded.
+
   User
     .create(req.body)
     .then(() => res.redirect('/login'))

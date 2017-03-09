@@ -65,7 +65,7 @@ router.route('/users/:id')
 
 router.route('/register')
   .get(registrations.new)
-  .post(registrations.create)
+  .post(upload.single('ppImage'), registrations.create)
   .delete(secureRoute, registrations.delete);
 
 //---------------------LOGIN-------------------

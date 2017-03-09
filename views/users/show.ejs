@@ -1,4 +1,5 @@
 <img id="profilePic" src="<%= user.image %>">
+<img src="<%= user.ppImage %>" alt="<%= user.username %>">
 <h1><%= user.username %></h1>
 <% if(locals.isAuthenticated) { %>
 
@@ -13,14 +14,20 @@
       <img src="<%= blog.imageSRC %>" class="img-fluid img-thumbnail" alt="<%= blog.dish %>">
       <h2><%= blog.dish %></h2>
       </a>
-
-
   </div>
-
 
     <% }) %>
   </div>
+
   </div>
+
+  <form method="POST" action="/profile">
+  <input type="hidden" name="_method" value="DELETE">
+  <button>Delete Account</button>
+</form>
     <% } %>
+
+
+
 
 <p>Got a blog to add? click <a class="underlined" href="/blogs/new">here</a> to add one now</p>
