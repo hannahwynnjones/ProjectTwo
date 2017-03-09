@@ -68,3 +68,5 @@ app.use(routes);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express always listens to port ${port}`));
+
+module.exports = app;

@@ -25,7 +25,13 @@ function blogsCreate(req, res, next) {
   Blog
     .create(req.body)
     .then(() => res.redirect('/blogs'))
-    .catch(next);
+    .catch((err) => {
+      if(err.name ==='ValidationError') {
+        return res.badRequest('/blogs/new', err.toString());
+
+      }
+      next(err);
+    });
 }
 
 //-----------------show individual blogs---------------

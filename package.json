@@ -9,7 +9,7 @@
   "author": "Hannah Wynn Jones, hannahwynnjones2@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.22.0",
+    "aws-sdk": "^2.25.0",
     "bcrypt": "^1.0.2",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.1",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -40,7 +41,8 @@
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
-    "gulp-sequence": "^0.4.6"
+    "gulp-sequence": "^0.4.6",
+    "supertest": "^3.0.0"
   },
   "description": ""
 }

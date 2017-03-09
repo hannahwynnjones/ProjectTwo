@@ -199,20 +199,21 @@ div.box2 {
   margin: 0 30px;
   text-align: center;
   position: relative;
+  text-transform: uppercase;
 }
 
-.about {
-  background-color: rgba(130, 125, 120, 0.8);
-  padding: 30px;
-  display: inline-block;
-  text-align: left;
-  position: relative;
-  z-index: 1000;
-  color: $darkGrey;
-  font-weight: bold;
-  font-size: 20px;
-  height: 520px;
-}
+// .about {
+//   background-color: rgba(130, 125, 120, 0.8);
+//   padding: 30px;
+//   display: inline-block;
+//   text-align: left;
+//   position: relative;
+//   z-index: 1000;
+//   color: $darkGrey;
+//   font-weight: bold;
+//   font-size: 20px;
+//   height: 520px;
+// }
 .contact2 {
     padding: 30px 650px 30px 30px;
     display: inline-block;
