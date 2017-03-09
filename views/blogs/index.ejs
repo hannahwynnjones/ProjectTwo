@@ -1,8 +1,9 @@
 <h1>Dishs</h1>
-<p>Once <a href="/login">logged in</a>, click on the blog to add comments.</p>
+<p>Once <a href="/login">logged in</a>, click on the blog to add comments.  Got a blog to add? click <a class="underlined" href="/blogs/new">here</a> to add one now</p>
 
 <% if(locals.isAuthenticated) { %>
-  <a href="/blogs/new" class="button">Add</a>
+
+
 <% } %>
   <div class="row">
     <% blogs.forEach((blog) => { %>
