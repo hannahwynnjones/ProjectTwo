@@ -15,12 +15,12 @@ const userSchema = new mongoose.Schema({
   // ppImage: { type: String }
 });
 
-userSchema
-  .virtual('ppImage')
-  .get(function getppImage(){
-    if(!this.filename) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`;
-    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
-  });
+// userSchema
+//   .virtual('ppImage')
+//   .get(function getppImage(){
+//     if(!this.filename) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`;
+//     return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
+//   });
 
 userSchema.virtual('profileImageSRC')
   .get(function getProfileImageSRC(){
@@ -32,7 +32,7 @@ userSchema.virtual('profileImageSRC')
 userSchema
 .virtual('imageSRC')
 .get(function getImageSRC() {
-  if(!this.image) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`; //replace null with something that openes if image doesn't load
+  if(!this.image) return null; //replace null with something that openes if image doesn't load
   return `http://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.image}`;
 });
 
