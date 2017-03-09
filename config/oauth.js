@@ -19,7 +19,7 @@ module.exports = {
     clientSecret: process.env.FB_BAKE_CLIENT_SECRET,
     scope: 'user:email',
     getLoginURL() {
-      return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=http://localhost:3000/oauth/facebook`;
+      return `${this.loginURL}?client_id=${this.clientId}&redirect_uri=https://blooming-falls-61034.herokuapp.com/oauth/facebook`;
     }
 
   }
