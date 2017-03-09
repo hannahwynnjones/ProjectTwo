@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   image: { type: String },
   password: { type: String },
   githubId: { type: Number },
-  profilePic: { type: String },
   images: { type: String },
   facebookId: { type: String }
   // ppImage: { type: String }
@@ -22,11 +21,11 @@ const userSchema = new mongoose.Schema({
 //     return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.filename}`;
 //   });
 
-userSchema.virtual('profileImageSRC')
+userSchema.virtual('imageSRC')
   .get(function getProfileImageSRC(){
-    if(!this.profileImage) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`;
-    if(this.profileImage.match(/^http/)) return this.profileImage;
-    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.profileImage}`;
+    if(!this.image) return `https://i.ytimg.com/vi/0FEYvKxCnYw/maxresdefault.jpg`;
+    if(this.image.match(/^http/)) return this.image;
+    return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.image}`;
   });
 
 userSchema
