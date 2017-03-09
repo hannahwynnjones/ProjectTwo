@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
   githubId: { type: Number },
   profilePic: { type: String },
   images: { type: String },
-  facebookId: { type: String }
+  facebookId: { type: String },
+  ppImage: { type: String }
 });
 
 userSchema.virtual('profileImageSRC')
@@ -28,6 +29,13 @@ userSchema.virtual('profileImageSRC')
     if(this.profileImage.match(/^http/)) return this.profileImage;
     return `https://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.profileImage}`;
   });
+
+userSchema
+.virtual('imageSRC')
+.get(function getImageSRC() {
+  if(!this.image) return null; //replace null with something that openes if image doesn't load
+  return `http://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.image}`;
+});
 
 userSchema
   .virtual('passwordConfirmation')
