@@ -14,6 +14,7 @@ beforeEach((done) => {
   Blog.collection.drop();
   User.collection.drop();
 
+
   User.create([{
     username: 'Emily',
     password: 'password',
@@ -37,22 +38,22 @@ beforeEach((done) => {
 });
 
 //Checking for the Index route
-describe('GET /', () => {
+describe('GET /blogs', () => {
   it('should return a 200 reponse', (done) => {
-    app.get('/')
+    app.get('/blogs')
     .expect(200, done);
   });
 
-  // it('should dislay all the blogs', (done) => {
-  //   app.get('/blogs')
-  //     .end((err, res) => {
-  //       testData.forEach((record) => {
-  //         expect(res.text).to.contain(`src="${record.imageSRC}"`);
-  //         expect(res.text).to.contain(`<h2>${record.dish}</h2>`);
-  //         expect(res.text).to.contain(`<p>${record.username}</p>`);
-  // //       });
-  // //       done();
-  // //     });
-  // });
+  it('should dislay all the blogs', (done) => {
+    app.get('/blogs')
+      .end((err, res) => {
+        Blog.forEach((record) => {
+          expect(res.text).to.contain(`src="${record.imageSRC}"`);
+          expect(res.text).to.contain(`<h2>${record.dish}</h2>`);
+          expect(res.text).to.contain(`<p>${record.username}</p>`);
+        });
+        done();
+      });
+  });
 });
 //-------------------------------------------

@@ -15,14 +15,18 @@ Approach / How it works
 
 The build
 
-- i started by creating the restful app and making sure each page and it's links worked before adding the image uploader using AWS to the 'new blog' page.
+- i started by creating the restful app and making sure each page and it's links worked before adding the image uploader using AWS to the 'new blog' page.  I added conditons so that blogs could only be edited by the
 
 - I then looked at adding facebook and github logins using their documentation.
 
--
+- Comments were added, and conditions so that only the owner of the comment could delete the comment.
 
  -authentication (inc getting blogs to edit or not depending on whether its your app)
 
 Problems & Challenges
+
+-testing was more difficult than i imagened as thre was no two models and the validation became an obstacal.  Instead of just looking at the blog model,
+
+
 
 additonal stuff
