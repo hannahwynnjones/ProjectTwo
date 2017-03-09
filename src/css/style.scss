@@ -214,7 +214,7 @@ div.box2 {
   height: 520px;
 }
 .contact2 {
-    padding: 30px 600px 30px 30px;
+    padding: 30px 650px 30px 30px;
     display: inline-block;
     text-align: left;
     position: relative;
@@ -236,6 +236,16 @@ div.box2 {
     left: 0%;
   }
 
+}
+
+.cranBox {
+  padding: 30px 650px 30px 30px;
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  top: 0%;
+  left: 0%;
+    height: 820px;
 }
 
 @media only screen and (max-width: 960px) {
