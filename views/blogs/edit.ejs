@@ -1,4 +1,4 @@
-<section id="loginId" style="background: url('../assets/images/blueberries-copy.jpg');   height: 800px; width: 1100px; background-position: center; background-size: cover; margin: -40px 0 20px; z-index: 100;">
+<section id="loginId" style="background: url('../assets/images/blueberries-copy.jpg');   height: 100vh; background-position: center; background-size: cover; margin: -40px 0 20px; z-index: 100;">
 
 <div class="loginBox">
 
@@ -8,26 +8,26 @@
   <input type="hidden" name="_method" value="PUT">
 
   <div class="form-group">
-    <label for="username">Username</label>
+    <label class="newLabel" for="username">Username</label>
     <textarea name="username" id="username" placeholder="Username"><%= blog.username %></textarea>
   </div>
 
   <div class="form-group">
-    <label for="dish">Dish</label>
+    <label class="newLabel" for="dish">Dish</label>
     <textarea name="dish" id="dish" placeholder="Dish"><%= blog.dish %></textarea>
   </div>
 
   <div class="form-group">
-    <label for="description">Description</label>
+    <label class="newLabel" for="description">Description</label>
     <textarea name="description" id="description" placeholder="Description"><%= blog.description %></textarea>
   </div>
 
   <div class="form-group">
-    <label for="tag">Tag</label>
+    <label class="newLabel" for="tag">Tag</label>
     <textarea name="tag" id="tag" placeholder="Tag"><%= blog.tag %></textarea>
   </div>
 
-  <button>Update</button>
+  <button class="addBlog">Update</button>
 </form>
 </div>
 
