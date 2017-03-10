@@ -47,8 +47,8 @@ router.route('/blogs/:id/comments')
 router.route('/blogs/:id/comments/:commentId')
   .delete(secureRoute, blogsController.deleteComment);
 
-router.route('/blogs/:id/editComments')
-  .post(secureRoute, blogsController.editComment);
+// router.route('/blogs/:id/editComments')
+//   .post(secureRoute, blogsController.editComment);
 
 //---------------------SHOW ALL PROFILES---------------
 
@@ -65,9 +65,9 @@ router.route('/users/:id')
 //----------------REGISTER---------------------
 
 router.route('/register')
-  .get(registrations.new)
-  .post(upload.single('ppImage'), registrations.create)
-  .delete(secureRoute, registrations.delete);
+  .get(registrations.new);
+  // .post(upload.single('ppImage'), registrations.create);
+  // .delete(secureRoute, registrations.delete);
 
 //---------------------LOGIN-------------------
 

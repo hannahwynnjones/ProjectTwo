@@ -20,7 +20,6 @@ function createRoute(req, res, next) {
     });
 }
 
-
 function showRoute(req, res) {
   return res.render('registrations/show'); ///not sure why this isnt '/'
 }
@@ -37,6 +36,7 @@ function deleteRoute(req, res, next) {
 module.exports = {
   new: newRoute,
   show: showRoute,
-  create: createRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  create: createRoute
+
 };

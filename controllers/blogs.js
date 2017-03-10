@@ -58,7 +58,6 @@ function blogsShow(req, res, next) {
     .catch(next);
 }
 
-// http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3
 
 //-----------edit blogs----------------------
 
