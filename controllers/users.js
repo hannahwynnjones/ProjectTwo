@@ -29,17 +29,21 @@ function usersShow(req, res, next) {
     .catch(next);
 }
 
-// function deleteRoute(req, res, next) {
-//   req.user
-//     .remove()
-//     .then(() => {
-//       req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
-//     })
-//     .catch(next);
-// }
+//------------------delete users--------------
+function deleteRoute(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      return user.remove();
+    })
+    .then(() => res.redirect('/'))
+    .catch(next);
+}
 
 module.exports = {
   index: usersIndex,
-  // delete: deleteRoute,
+  delete: deleteRoute,
   show: usersShow
 };

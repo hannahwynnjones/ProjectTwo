@@ -12,15 +12,17 @@ Blog.collection.drop();
 
 User
   .create([{
-    username: 'tom',
+    username: 'Tom',
     email: 't@t',
     password: 'p',
+    image: 'assets/images/ben5.JPG',
     passwordConfirmation: 'p'
   },{
-    username: 'hannah',
-    email: 'hannah@mail.com',
-    password: 'password',
-    passwordConfirmation: 'password'
+    username: 'Maddy',
+    email: 'm@m',
+    password: 'p',
+    passwordConfirmation: 'p',
+    image: 'src/assets/images/tired.jpeg'
   }])
   .then((users) => {
     console.log(`${users.length} users created!`);

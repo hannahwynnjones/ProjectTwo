@@ -24,19 +24,19 @@ function showRoute(req, res) {
   return res.render('registrations/show'); ///not sure why this isnt '/'
 }
 
-function deleteRoute(req, res, next) {
-  req.user
-    .remove()
-    .then(() => {
-      req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
-    })
-    .catch(next);
-}
+// function deleteRoute(req, res, next) {
+//   req.user
+//     .remove()
+//     .then(() => {
+//       req.session.regenerate(() => res.unauthorized('/', 'Your account has been deleted'));
+//     })
+//     .catch(next);
+// }
 
 module.exports = {
   new: newRoute,
   show: showRoute,
-  delete: deleteRoute,
+  // delete: deleteRoute,
   create: createRoute
 
 };
