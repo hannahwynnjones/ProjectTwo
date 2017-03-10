@@ -141,20 +141,6 @@ function deleteCommentRoute(req, res, next) {
 }
 //---------------------------------------------------------
 
-//EDIT comments
-
-function editCommentRoute(req, res, next) {
-
-  req.body.createdBy = req.user;
-
-  Blog
-  .findById(req.params.id)
-  .exec()
-  .then((blog) => {
-    return res.render('blogs/editcomment', { blog });
-  })
-  .catch(next);
-}
 
 module.exports = {
   index: blogsIndex,
@@ -165,6 +151,5 @@ module.exports = {
   update: blogsUpdate,
   delete: blogsDelete,
   createComment: createCommentRoute,
-  deleteComment: deleteCommentRoute,
-  editComment: editCommentRoute
+  deleteComment: deleteCommentRoute
 };

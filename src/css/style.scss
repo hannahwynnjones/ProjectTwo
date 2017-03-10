@@ -51,6 +51,10 @@ button {
   background-color: $lightGrey;
   color: $darkGrey;
   border-radius: 5px;
+  font-size: 16px;
+  a {
+    color: $darkGrey;
+  }
 
 }
 p {
@@ -172,7 +176,7 @@ div.box2 {
     display:block;
     text-align:center;
     font-weight:400;
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .loginLinks {

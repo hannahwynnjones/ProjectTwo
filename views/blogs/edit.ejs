@@ -7,8 +7,7 @@
 <h1>Edit</h1>
 
 <form method="POST" action="/blogs/<%= blog.id %>">
-  <input type="hidden" name="_method" value="PUT">
-
+  <%# <input type="hidden" name="_method" value="PUT">%>
 
   <div class="form-group">
     <label class="newLabel" for="dish">Dish</label>
@@ -21,8 +20,13 @@
   </div>
 
   <div class="form-group">
-    <label class="newLabel" for="tag">Tag</label>
+    <label class="recipeTag newLabel" for="tag">Tag</label>
     <textarea name="tag" id="tag" placeholder="Tag" required><%= blog.tag %></textarea>
+  </div>
+
+  <div class="form-group">
+    <label class="newLabel" for="filename">Image file</label>
+    <input class="newLabel addBlog" type="file" name="filename" id="filename">
   </div>
 
   <button class="addBlog">Update</button>

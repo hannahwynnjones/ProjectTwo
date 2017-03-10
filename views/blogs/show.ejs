@@ -29,7 +29,7 @@
 
 <div class="showBlog">
   <% if(blog.createdBy.username === user.username) { %>
-  <button>
+  <button class="addBlog">
     <a href="/blogs/<%= blog.id %>/edit">Edit <%= blog.dish %> Blog</a>
   </button>
   <% } %>
@@ -37,9 +37,10 @@
 
 <%# ---------------------deleting blog----------------%>
 <% if(blog.createdBy.username === user.username) { %>
+  
   <form method="POST" action="/blogs/<%= blog.id %>">
     <input type="hidden" name="_method" value="DELETE">
-    <button class="btn btn-danger">Delete <%= blog.dish %> Blog</button>
+    <button >Delete <%= blog.dish %> Blog</button>
   </form>
 <% } %>
 </div>

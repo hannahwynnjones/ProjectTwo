@@ -59,7 +59,8 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(usersController.show)
-  .get(blogsController.show);
+  .get(blogsController.show)
+  .delete(secureRoute, registrations.delete);
 
 //----------------REGISTER---------------------
 

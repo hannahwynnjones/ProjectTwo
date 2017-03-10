@@ -35,6 +35,11 @@ userSchema
   return `http://s3-eu-west-1.amazonaws.com/wdilondonbucket/${this.image}`;
 });
 
+
+userSchema.pre('remove', function removeImage(next) {
+  s3.deleteObject({ Key: this.image}, next);
+});
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {

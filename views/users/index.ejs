@@ -1,21 +1,17 @@
 <h1>Rate My Bake Users</h1>
 
-<% if(locals.isAuthenticated) { %>
+  <% if(locals.isAuthenticated) { %>
 
-<% users.forEach((user) => { %>
-  <div class="index">
+  <% users.forEach((user) => { %>
+    <div class="index">
 
-    <a href="/users/<%= user.id %>">
+      <a href="/users/<%= user.id %>">
 
+          <img id="profilePic" src="<%= user.imageSRC %>">
 
+        <h2 class="index"><%= user.username %></h2>
+      </a>
 
-        <img id="profilePic" src="<%= user.imageSRC %>">
-
-
-
-      <h2 class="index"><%= user.username %></h2>
-    </a>
-
-  </div>
-<% }) %>
+    </div>
+  <% }) %>
 <% } %>
