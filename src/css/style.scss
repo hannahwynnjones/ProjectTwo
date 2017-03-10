@@ -16,6 +16,7 @@ a {
   color: white;
   text-decoration: none;
   margin: 0 2px;
+  
 
   .underlined {
   text-decoration: underline;
@@ -169,6 +170,12 @@ div.box2 {
     }
     .addBlog {
       font-size: 20px;
+      a {
+        color: $darkGrey;
+      }
+      a:visited {
+          color: $darkGrey;
+      }
     }
   }
   a {
