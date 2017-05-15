@@ -74,7 +74,8 @@ function facebook(req, res, next) {
   })
   .then((profile) => {
     console.log(profile);
-    return User.findOne({email: profile.email })//first check their emails in case they already exist on our systm
+    return User
+    .findOne({email: profile.email })//first check their emails in case they already exist on our systm
       .then((user) => {
         if(!user) {
           user = new User({

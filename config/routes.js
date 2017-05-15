@@ -60,7 +60,7 @@ router.route('/users')
 router.route('/users/:id')
   .get(usersController.show)
   .get(blogsController.show)
-  .delete(secureRoute, usersController.delete);
+  .delete(secureRoute, registrations.delete);
 
 //----------------REGISTER---------------------
 
